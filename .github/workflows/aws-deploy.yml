@@ -17,12 +17,12 @@ jobs:
     env:
       AWS_REGION: ${{ vars.AWS_REGION }}
       AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
-      FUNCTION_NAME: ${{ vars.FUNCTION_NAME }}
-      APP_URL: ${{ vars.URL }}
       AWS_S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
       CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+      APP_URL: ${{ vars.URL }}
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -45,29 +45,19 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy static site to S3
-        if: ${{ env.AWS_S3_BUCKET != '' }}
         run: |
           aws s3 sync dist s3://${AWS_S3_BUCKET} --delete
 
-          if [ -n "${CLOUDFRONT_DISTRIBUTION_ID}" ]; then
-            aws cloudfront create-invalidation \
-              --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
-              --paths "/*"
-          fi
-
-      - name: Update Lambda function if configured
-        if: ${{ env.FUNCTION_NAME != '' }}
+      - name: Invalidate CloudFront cache
         run: |
-          cd dist
-          zip -r ../deploy-package.zip .
-          cd ..
-
-          aws lambda update-function-code \
-            --function-name "${FUNCTION_NAME}" \
-            --zip-file fileb://deploy-package.zip
+          aws cloudfront create-invalidation \
+            --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
+            --paths "/*"
 
       - name: Deployment summary
         run: |
-          echo "Deployment finished successfully."
-          echo "App URL: ${APP_URL:-'not configured'}"
+          echo "Deployment completed successfully."
+          echo "App URL: ${APP_URL}"
           echo "AWS Region: ${AWS_REGION}"
+          echo "S3 Bucket: ${AWS_S3_BUCKET}"
+          echo "CloudFront Distribution: ${CLOUDFRONT_DISTRIBUTION_ID}"
