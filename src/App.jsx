@@ -10,12 +10,14 @@ import {
   Mail,
   MapPin,
   Menu,
+  Radio,
   Sparkles,
   X,
 } from 'lucide-react'
 import { portfolio } from './data/portfolio'
 import { SectionHeading } from './components/SectionHeading'
 import { AnimatedCounter } from './components/AnimatedCounter'
+import retroTerminal from './assets/retro/terminal-collage.png'
 
 const sectionReveal = {
   hidden: { opacity: 0, y: 24 },
@@ -83,12 +85,12 @@ function App() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-cyan-400/30 selection:text-white">
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute left-[-10%] top-[-12%] h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl" />
-        <div className="absolute right-[-8%] top-[20%] h-[28rem] w-[28rem] rounded-full bg-violet-500/15 blur-3xl" />
+    <div className="retro-site min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-cyan-400/30 selection:text-white">
+      <div className="retro-noise pointer-events-none fixed inset-0 overflow-hidden">
+        <div className="retro-orb absolute left-[-10%] top-[-12%] h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl" />
+        <div className="retro-orb retro-orb-delayed absolute right-[-8%] top-[20%] h-[28rem] w-[28rem] rounded-full bg-violet-500/15 blur-3xl" />
         <div className="absolute bottom-[-10%] left-[20%] h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(circle_at_center,black,transparent_78%)]" />
+        <div className="retro-grid absolute inset-0" />
       </div>
 
       <div className="fixed inset-x-0 top-0 z-50 h-1.5 bg-slate-900/80 backdrop-blur-sm">
@@ -97,8 +99,8 @@ function App() {
 
       <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          <button type="button" onClick={() => handleNavClick('home')} className="flex items-center gap-3 text-left text-sm font-semibold tracking-[0.2em] text-white/90 uppercase">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-cyan-400/40 bg-cyan-400/10 text-cyan-300">RK</span>
+          <button type="button" onClick={() => handleNavClick('home')} className="retro-brand flex items-center gap-3 text-left text-sm font-semibold tracking-[0.2em] text-white/90 uppercase">
+            <span className="retro-brand-mark inline-flex h-9 w-9 items-center justify-center text-cyan-300">RK</span>
             Rahul Kumar
           </button>
 
@@ -150,7 +152,7 @@ function App() {
       </header>
 
       <main>
-        <section id="home" className="relative mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-20">
+        <section id="home" className="retro-hero relative mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -158,13 +160,14 @@ function App() {
             className="grid items-center gap-10 lg:grid-cols-[1.35fr_0.65fr]"
           >
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.25em] text-cyan-200">
+              <div className="retro-kicker mb-6 inline-flex items-center gap-2 px-4 py-2 text-xs font-medium uppercase tracking-[0.25em] text-cyan-200">
                 <Sparkles size={14} />
                 {portfolio.heroBadge}
               </div>
 
-              <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.06em] text-white sm:text-5xl lg:text-7xl">
-                Rahul Kumar
+              <p className="retro-console-label">// SYSTEM ONLINE · ENGINEERING SINCE 2016</p>
+              <h1 className="retro-title max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.06em] text-white sm:text-5xl lg:text-7xl">
+                Rahul<span className="retro-title-dot">.</span><br />Kumar
               </h1>
 
               <div className="mt-4 flex flex-wrap items-center gap-3 text-lg text-slate-200 sm:text-xl">
@@ -214,27 +217,17 @@ function App() {
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
               className="relative mx-auto w-full max-w-md"
             >
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_120px_rgba(38,86,110,0.35)] backdrop-blur-xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10" />
-                <div className="relative">
-                  <div className="mb-6 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200">
-                      <span className="h-2 w-2 rounded-full bg-cyan-300" />
-                      Available
-                    </span>
-                    <span className="text-xs text-slate-400">Noida, India</span>
-                  </div>
-
-                  <div className="space-y-4">
+              <div className="retro-hero-art relative overflow-hidden p-3 shadow-[0_25px_120px_rgba(38,86,110,0.35)] backdrop-blur-xl">
+                <img src={retroTerminal} alt="Retro computer, disk, and rocket illustration" className="retro-terminal-art relative z-10 w-full" />
+                <div className="retro-status relative z-20 -mt-16 mx-2 grid grid-cols-2 gap-2 sm:mx-5">
                     {portfolio.stats.map((stat) => (
-                      <div key={stat.label} className="rounded-2xl border border-white/10 bg-slate-900/80 p-4">
-                        <div className="text-2xl font-semibold text-white">
+                      <div key={stat.label} className="retro-stat p-3">
+                        <div className="text-xl font-semibold text-white">
                           <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                         </div>
-                        <div className="mt-1 text-sm text-slate-400">{stat.label}</div>
+                        <div className="mt-1 text-[10px] uppercase tracking-[0.12em] text-slate-300">{stat.label}</div>
                       </div>
                     ))}
-                  </div>
                 </div>
               </div>
             </motion.div>
@@ -425,15 +418,19 @@ function App() {
           </div>
         </motion.section>
 
-        <motion.section id="experience" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={sectionReveal} className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <motion.section id="experience" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={sectionReveal} className="retro-experience mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <SectionHeading eyebrow="Experience" title="Career progression across enterprise systems, product delivery, and technical leadership." description="From Java platform foundations to modern SaaS architecture and microservice transformation." />
 
-          <div className="relative mt-10">
+          <div className="retro-track-shell relative mt-10">
+            <div className="retro-track-heading flex items-center justify-between gap-4 px-1 pb-5 text-xs font-bold uppercase tracking-[0.22em] text-cyan-200">
+              <span className="flex items-center gap-2"><Radio size={15} className="animate-pulse" /> Signal path / swipe to explore</span>
+              <span className="hidden text-fuchsia-300 sm:block">← left to right →</span>
+            </div>
             <div className="absolute left-5 top-0 h-full w-px bg-gradient-to-b from-cyan-400/0 via-cyan-400/80 to-cyan-400/0 md:left-1/2" />
 
-            <div className="space-y-8">
+            <div className="retro-track space-y-8">
               {portfolio.experience[0].roles.map((role, index) => (
-                <div key={role.title} className={`relative md:flex md:items-start ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
+                <div key={role.title} className={`retro-role-card relative md:flex md:items-start ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
                   <div className="md:w-1/2 md:pr-10">
                     <div className={`rounded-[1.6rem] border border-white/10 bg-white/5 p-5 shadow-[0_8px_30px_rgba(15,23,42,0.35)] ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                       <div className="mb-3 flex items-center justify-between gap-3 text-xs uppercase tracking-[0.18em] text-cyan-200">

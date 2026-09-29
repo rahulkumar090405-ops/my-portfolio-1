@@ -53,3 +53,149 @@ img {
     scroll-behavior: auto !important;
   }
 }
+
+/* Retro-futurist visual system */
+.retro-site {
+  --ink: #09061b;
+  --paper: #fff4d6;
+  --cyan: #27e8ff;
+  --pink: #ff3ea5;
+  --lime: #d6ff3f;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Trebuchet MS', 'Arial Narrow', sans-serif;
+  isolation: isolate;
+}
+
+.retro-site::before {
+  content: '';
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  pointer-events: none;
+  opacity: .07;
+  background-image: repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.9) 3px 4px);
+  mix-blend-mode: overlay;
+}
+
+.retro-site header {
+  border-bottom: 2px solid var(--cyan) !important;
+  background: rgba(9, 6, 27, .88) !important;
+  box-shadow: 0 4px 0 var(--pink), 0 8px 24px rgba(39, 232, 255, .14);
+}
+
+.retro-site h1,
+.retro-site h2,
+.retro-site h3,
+.retro-brand {
+  font-family: Impact, 'Arial Black', sans-serif;
+  letter-spacing: .03em;
+}
+
+.retro-site h2 { text-transform: uppercase; }
+
+.retro-grid {
+  opacity: .42;
+  background-image:
+    linear-gradient(rgba(39,232,255,.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39,232,255,.14) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 86%, transparent);
+}
+
+.retro-noise { z-index: -1; background: radial-gradient(circle at 75% 12%, rgba(255,62,165,.16), transparent 22%), radial-gradient(circle at 15% 68%, rgba(214,255,63,.08), transparent 25%); }
+.retro-orb { animation: retro-float 9s ease-in-out infinite; }
+.retro-orb-delayed { animation-delay: -4s; }
+
+.retro-brand-mark {
+  border: 2px solid var(--pink);
+  background: var(--lime);
+  color: #140923 !important;
+  clip-path: polygon(50% 0, 100% 20%, 88% 100%, 12% 100%, 0 20%);
+  text-shadow: none;
+}
+
+.retro-brand { color: var(--paper) !important; text-shadow: 2px 2px 0 var(--pink); }
+.retro-kicker {
+  border: 2px solid var(--cyan);
+  background: #10134b;
+  box-shadow: 4px 4px 0 var(--pink);
+}
+.retro-console-label { margin: 0 0 .75rem; color: var(--lime); font-family: 'Courier New', monospace; font-size: .72rem; letter-spacing: .14em; }
+.retro-title { text-transform: uppercase; text-shadow: 5px 5px 0 var(--pink), 9px 9px 0 rgba(39,232,255,.34); }
+.retro-title-dot { color: var(--lime); }
+
+.retro-hero::after {
+  content: '✦  JAVA  •  SPRING  •  SYSTEMS  •  DELIVERY  ✦';
+  display: block;
+  margin-top: 3.5rem;
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--lime);
+  font: 800 .72rem/2.5 'Courier New', monospace;
+  letter-spacing: .35em;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 5px 5px 0 var(--pink);
+}
+
+.retro-hero-art {
+  border: 2px solid var(--cyan);
+  background: linear-gradient(145deg, #162559 0%, #0d0924 70%);
+  box-shadow: 7px 7px 0 var(--pink), 14px 14px 0 rgba(214,255,63,.45) !important;
+}
+.retro-hero-art::before { content: 'UPLINK // 90s EDITION'; position: absolute; z-index: 20; top: .9rem; right: .85rem; padding: .25rem .45rem; border: 1px solid var(--lime); background: var(--ink); color: var(--lime); font: 700 .55rem 'Courier New', monospace; letter-spacing: .12em; }
+.retro-terminal-art { filter: drop-shadow(0 9px 10px rgba(0,0,0,.4)); animation: retro-float 6s ease-in-out infinite; }
+.retro-status { filter: drop-shadow(3px 3px 0 rgba(9,6,27,.8)); }
+.retro-stat { border: 1px solid var(--cyan); background: rgba(9,6,27,.88); box-shadow: 3px 3px 0 var(--pink); }
+
+.retro-site [class*='rounded-'] { border-radius: .35rem; }
+.retro-site main article,
+.retro-site main section > div > div[class*='bg-white'] { box-shadow: 5px 5px 0 rgba(255, 62, 165, .55); }
+.retro-site button[class*='bg-cyan'], .retro-site a[class*='bg-cyan'] { box-shadow: 4px 4px 0 var(--pink); }
+.retro-site button[class*='bg-cyan']:hover, .retro-site a[class*='bg-cyan']:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--pink); }
+
+.retro-experience { overflow: hidden; }
+.retro-track-shell { border: 2px solid var(--cyan); background: rgba(16, 10, 43, .7); box-shadow: 8px 8px 0 var(--pink); }
+.retro-track-heading { background: var(--ink); border-bottom: 1px solid rgba(39,232,255,.45); }
+.retro-track-shell > .absolute { display: none; }
+.retro-track-shell::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 5.55rem;
+  left: 2rem;
+  right: 2rem;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--cyan) 0 18px, var(--pink) 18px 28px, var(--lime) 28px 33px, transparent 33px 48px);
+  animation: retro-signal 1.15s linear infinite;
+  box-shadow: 0 0 10px var(--cyan);
+}
+.retro-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 3rem 1.25rem 1.5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--pink) #1b1640;
+  scrollbar-width: thin;
+}
+.retro-role-card {
+  flex: 0 0 min(25rem, calc(100vw - 4.5rem));
+  width: min(25rem, calc(100vw - 4.5rem));
+  scroll-snap-align: start;
+  margin: 0 !important;
+  padding-top: .6rem;
+}
+.retro-role-card::before { content: ''; position: absolute; z-index: 2; top: -2.55rem; left: 1.35rem; width: 1.15rem; height: 1.15rem; border: 3px solid var(--ink); background: var(--lime); box-shadow: 0 0 0 2px var(--cyan), 0 0 14px var(--lime); transform: rotate(45deg); }
+.retro-role-card > div { width: 100% !important; padding-right: 0 !important; }
+.retro-role-card > div > div { border: 2px solid var(--pink) !important; background: #120d31 !important; box-shadow: 5px 5px 0 var(--cyan) !important; }
+.retro-role-card [class*='rounded-full'] { border-radius: 0; }
+
+@keyframes retro-float { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
+@keyframes retro-signal { to { background-position: 48px 0; } }
+
+@media (max-width: 640px) {
+  .retro-title { text-shadow: 3px 3px 0 var(--pink), 6px 6px 0 rgba(39,232,255,.34); }
+  .retro-hero::after { letter-spacing: .17em; text-align: left; padding-left: 1rem; }
+}
